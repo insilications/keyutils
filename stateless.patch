@@ -1,0 +1,32 @@
+Index: keyutils-1.5.9/request-key.c
+===================================================================
+--- keyutils-1.5.9.orig/request-key.c	2014-02-21 15:18:24.000000000 +0000
++++ keyutils-1.5.9/request-key.c	2015-03-19 11:17:06.606491146 +0000
+@@ -285,8 +285,12 @@
+ 	else
+ 		snprintf(conffile, sizeof(conffile) - 1, "request-key.conf");
+ 	conf = fopen(conffile, "r");
+-	if (!conf)
+-		error("Cannot open %s: %m\n", conffile);
++	if (!conf) {
++		snprintf(conffile, sizeof(conffile) - 1, "/usr/share/keyutils/request-key.conf");
++		conf = fopen(conffile, "r");
++		if (!conf)
++			error("Cannot open %s: %m\n", conffile);
++	}
+ 
+ opened_conf_file:
+ 	debug("Opened config file '%s'\n", conffile);
+Index: keyutils-1.5.9/Makefile
+===================================================================
+--- keyutils-1.5.9.orig/Makefile	2014-02-21 15:18:24.000000000 +0000
++++ keyutils-1.5.9/Makefile	2015-03-19 11:16:45.494492130 +0000
+@@ -166,7 +166,7 @@
+ 	$(INSTALL) -D request-key $(DESTDIR)$(SBINDIR)/request-key
+ 	$(INSTALL) -D request-key-debug.sh $(DESTDIR)$(SHAREDIR)/request-key-debug.sh
+ 	$(INSTALL) -D key.dns_resolver $(DESTDIR)$(SBINDIR)/key.dns_resolver
+-	$(INSTALL) -D -m 0644 request-key.conf $(DESTDIR)$(ETCDIR)/request-key.conf
++	$(INSTALL) -D -m 0644 request-key.conf $(DESTDIR)$(SHAREDIR)/request-key.conf
+ 	mkdir -p $(DESTDIR)$(ETCDIR)/request-key.d
+ 	mkdir -p $(DESTDIR)$(MAN1)
+ 	$(INSTALL) -m 0644 $(wildcard man/*.1) $(DESTDIR)$(MAN1)
