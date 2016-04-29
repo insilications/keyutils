@@ -4,7 +4,7 @@
 #
 Name     : keyutils
 Version  : 1.5.9
-Release  : 10
+Release  : 11
 URL      : http://people.redhat.com/~dhowells/keyutils/keyutils-1.5.9.tar.bz2
 Source0  : http://people.redhat.com/~dhowells/keyutils/keyutils-1.5.9.tar.bz2
 Summary  : Linux Key Management Utilities
