@@ -4,7 +4,7 @@
 #
 Name     : keyutils
 Version  : 1.5.10
-Release  : 14
+Release  : 15
 URL      : http://people.redhat.com/~dhowells/keyutils/keyutils-1.5.10.tar.bz2
 Source0  : http://people.redhat.com/~dhowells/keyutils/keyutils-1.5.10.tar.bz2
 Summary  : Linux Key Management Utilities
