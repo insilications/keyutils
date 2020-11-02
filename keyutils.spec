@@ -4,7 +4,7 @@
 #
 Name     : keyutils
 Version  : 1.6
-Release  : 18
+Release  : 19
 URL      : http://people.redhat.com/~dhowells/keyutils/keyutils-1.6.tar.bz2
 Source0  : http://people.redhat.com/~dhowells/keyutils/keyutils-1.6.tar.bz2
 Summary  : Linux Key Management Utilities
@@ -82,6 +82,7 @@ man components for the keyutils package.
 
 %prep
 %setup -q -n keyutils-1.6
+cd %{_builddir}/keyutils-1.6
 %patch1 -p1
 
 %build
@@ -89,21 +90,21 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1564944651
+export SOURCE_DATE_EPOCH=1604359047
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1564944651
+export SOURCE_DATE_EPOCH=1604359047
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/keyutils
-cp LICENCE.GPL %{buildroot}/usr/share/package-licenses/keyutils/LICENCE.GPL
-cp LICENCE.LGPL %{buildroot}/usr/share/package-licenses/keyutils/LICENCE.LGPL
+cp %{_builddir}/keyutils-1.6/LICENCE.GPL %{buildroot}/usr/share/package-licenses/keyutils/60a58d43fa778820234a8e9d33a6b58ce8d7fe75
+cp %{_builddir}/keyutils-1.6/LICENCE.LGPL %{buildroot}/usr/share/package-licenses/keyutils/1c39e1d1004475e1237555e21dc8e0a3b70d3ff1
 %make_install LIBDIR=%{_libdir} USRLIBDIR=%{_libdir}
 
 %files
@@ -122,7 +123,7 @@ cp LICENCE.LGPL %{buildroot}/usr/share/package-licenses/keyutils/LICENCE.LGPL
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/keyutils.h
 /usr/lib64/libkeyutils.so
 /usr/lib64/pkgconfig/libkeyutils.pc
 /usr/share/man/man3/find_key_by_type_and_name.3
@@ -172,8 +173,8 @@ cp LICENCE.LGPL %{buildroot}/usr/share/package-licenses/keyutils/LICENCE.LGPL
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/keyutils/LICENCE.GPL
-/usr/share/package-licenses/keyutils/LICENCE.LGPL
+/usr/share/package-licenses/keyutils/1c39e1d1004475e1237555e21dc8e0a3b70d3ff1
+/usr/share/package-licenses/keyutils/60a58d43fa778820234a8e9d33a6b58ce8d7fe75
 
 %files man
 %defattr(0644,root,root,0755)
