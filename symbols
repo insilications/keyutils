@@ -7,7 +7,9 @@ libkeyutils.so.1:KEYUTILS_1.6
 libkeyutils.so.1:KEYUTILS_1.7
 libkeyutils.so.1:KEYUTILS_1.8
 libkeyutils.so.1:KEYUTILS_1.9
+libkeyutils.so.1:add_key
 libkeyutils.so.1:find_key_by_type_and_desc
+libkeyutils.so.1:keyctl
 libkeyutils.so.1:keyctl_assume_authority
 libkeyutils.so.1:keyctl_capabilities
 libkeyutils.so.1:keyctl_chown
@@ -47,3 +49,4 @@ libkeyutils.so.1:keyctl_unlink
 libkeyutils.so.1:keyctl_update
 libkeyutils.so.1:recursive_key_scan
 libkeyutils.so.1:recursive_session_key_scan
+libkeyutils.so.1:request_key
